@@ -1,3 +1,20 @@
 spring:
   application:
     name: spring-ai-demo
+  # The below code reference while working with openai. Then we should use the below properties.
+  #ai:
+  #  openai:
+  #    api-key: ${OPENAI_API_KEY}
+
+  # While working with the local model follow the below properties.
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: llama3.2:1b
+
+server:
+  port: 9292
+
+# without providing the ai related properties, the application will not start.
+# By default the spring ai will use the mistral model
