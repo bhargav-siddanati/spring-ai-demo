@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AIChatService {
 
-    private final ChatClient chatClient;
+    /*private final ChatClient chatClient;
 
     public AIChatService (ChatClient.Builder chatClientBuilder){
         this.chatClient = chatClientBuilder.build();
@@ -16,5 +16,5 @@ public class AIChatService {
         return chatClient.prompt(message)
                 .call()
                 .content();
-    }
+    }*/
 }

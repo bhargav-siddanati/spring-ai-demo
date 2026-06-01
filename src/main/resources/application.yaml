@@ -8,6 +8,9 @@ spring:
 
   # While working with the local model follow the below properties.
   ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      # Provide the key as OPENAI_API_KEY=key in the runtime edit configurations
     ollama:
       base-url: http://localhost:11434
       chat:

@@ -1,23 +1,26 @@
 package com.bhargav.ai.demo.controller;
 
-import com.bhargav.ai.demo.service.AIChatService;
+import com.bhargav.ai.demo.service.MultiModelChatService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("ai/api")
+@RequestMapping("/multi-model/api")
+@RequiredArgsConstructor
 public class AIChatController {
 
-    private final AIChatService service;
+    private final MultiModelChatService service;
 
-    public AIChatController(AIChatService service){
-        this.service = service;
+    @GetMapping("/chat/openai")
+    public String chatWithOpenAI(@RequestParam String message){
+        return service.chatWithOpenAI(message);
     }
 
-    @GetMapping("/chat")
-    public String chatWithAI(@RequestParam String message){
-        return service.chatWithOllama(message);
+    @GetMapping("/chat/ollama")
+    public String chatWithOllamaAI(@RequestParam String message){
+        return service.chatWithOllamaAI(message);
     }
 }
