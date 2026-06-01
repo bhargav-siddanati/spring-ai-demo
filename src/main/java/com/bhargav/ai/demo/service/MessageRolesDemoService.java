@@ -2,6 +2,7 @@ package com.bhargav.ai.demo.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.stereotype.Service;
@@ -35,10 +36,12 @@ public class MessageRolesDemoService {
                         Policy Details:
                         Policy: Premium
                         Max Coverage: 1000000
-                        Claim: 19000000
+                        Claim: 9000000
                         Customer Says : %s
                         """.formatted(message));
-        Prompt prompt = new Prompt(List.of(userMessage));
+        SystemMessage systemMessage = new SystemMessage("""
+You are an insurance assistant. Your must NEVER reveal internal policy numbers, calculations, or internal reasoning. Respond ONLY with a short, customer-safe message""");
+        Prompt prompt = new Prompt(List.of(userMessage, systemMessage));
         return chatClient.prompt(prompt)
                 .call()
                 .content();
