@@ -15,6 +15,6 @@ public class AIChatMessageRoleController {
 
     @GetMapping("/check/policy")
     public String checkPolicy(@RequestParam String message){
-        return messageRolesService.chatWithRoles(message);
+        return messageRolesService.chatWithRolesV2(message);
     }
 }
