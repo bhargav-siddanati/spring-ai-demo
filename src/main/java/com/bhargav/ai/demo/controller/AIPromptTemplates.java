@@ -18,4 +18,10 @@ public class AIPromptTemplates {
     public ChatResponse checkGuide(@RequestParam String message){
         return promptTemplatesService.guideMe(message);
     }
+    @GetMapping("/check/guide/v2")
+    public String checkGuideV2(@RequestParam String message,
+                               @RequestParam String level,
+                               @RequestParam int points){
+        return promptTemplatesService.guideMeV2(message, level, points);
+    }
 }

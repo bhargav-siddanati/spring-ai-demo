@@ -19,4 +19,12 @@ public class AIPromptTemplatesService {
                 .call()
                 .chatResponse();
     }
+    public String guideMeV2(String message, String level, int points){
+        return chatClient.prompt()
+                .system("You are a tech stack assistant. Give best answers to the students that is suitable to the student questions to the point")
+                .user("Explain me about " + message + " in " + level + " level and give me " + points + " important points about it")
+                .call()
+                .content();
+
+    }
 }
