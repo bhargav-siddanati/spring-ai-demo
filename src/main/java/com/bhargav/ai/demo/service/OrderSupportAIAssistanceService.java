@@ -16,6 +16,9 @@ public class OrderSupportAIAssistanceService {
     @Value("classpath:prompts/order_user_template.st")
     private Resource orderUserTemplate;
 
+    @Value("classpath:prompts/order_system_policy.st")
+    private Resource orderSystemPolicyTemplate;
+
     public OrderSupportAIAssistanceService(ChatClient.Builder chatClientBuilder){
         this.chatClient = chatClientBuilder.build();
     }
@@ -52,4 +55,16 @@ public class OrderSupportAIAssistanceService {
                 .call()
                 .content();
     }
+
+    public String assistantWithOrderSupportV3(String customerName, String OrderId, String customerMessage){
+        return chatClient.prompt()
+                .system(orderSystemPolicyTemplate)
+                .user(promptUserSpec -> promptUserSpec.text(orderUserTemplate)
+                        .param("customerName", customerName)
+                        .param("orderId", OrderId)
+                        .param("customerMessage", customerMessage))
+                .call()
+                .content();
+    }
+
 }

@@ -24,6 +24,6 @@ public class OrderSupportAIAssistantController {
     public String getOrderSupportAssistancev2(@RequestParam String customerName,
                                             @RequestParam String orderId,
                                             @RequestParam String customerMessage){
-        return service.assistantWithOrderSupportV2(customerName, orderId, customerMessage);
+        return service.assistantWithOrderSupportV3(customerName, orderId, customerMessage);
     }
 }
