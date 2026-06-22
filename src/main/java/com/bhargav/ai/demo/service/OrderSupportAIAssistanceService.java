@@ -1,15 +1,25 @@
 package com.bhargav.ai.demo.service;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderSupportAIAssistanceService {
+
     private final ChatClient chatClient;
+
+    @Value("classpath:prompts/order_system_template.st")
+    private Resource orderSystemTemplate;
+
+    @Value("classpath:prompts/order_user_template.st")
+    private Resource orderUserTemplate;
 
     public OrderSupportAIAssistanceService(ChatClient.Builder chatClientBuilder){
         this.chatClient = chatClientBuilder.build();
     }
+
     public String assistWithOrderSupport(String customerName, String OrderId, String customerMessage){
         return chatClient.prompt()
                 .system("You are a professional e-commerce customer support assistant. Your goal is to write clear, empathetic, and solution-oriented email responses. Never blame the customer or the company. Keep the response concise and friendly. Use the provided customer information and order details to generate accurate responses.")
@@ -28,6 +38,17 @@ public class OrderSupportAIAssistanceService {
                         .param("customerName", customerName)
                         .param("orderId", OrderId)
                 .param("customerMessage", customerMessage))
+                .call()
+                .content();
+    }
+
+    public String assistantWithOrderSupportV2(String customerName, String OrderId, String customerMessage){
+        return chatClient.prompt()
+                .system(orderSystemTemplate)
+                .user(promptUserSpec -> promptUserSpec.text(orderUserTemplate)
+                        .param("customerName", customerName)
+                        .param("orderId", OrderId)
+                        .param("customerMessage", customerMessage))
                 .call()
                 .content();
     }

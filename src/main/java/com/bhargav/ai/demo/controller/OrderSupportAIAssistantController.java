@@ -9,15 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/order-support")
+@RequiredArgsConstructor
 public class OrderSupportAIAssistantController {
-    private OrderSupportAIAssistanceService service;
-    public OrderSupportAIAssistantController(OrderSupportAIAssistanceService service){
-        this.service = service;
-    }
+    private final OrderSupportAIAssistanceService service;
+
     @GetMapping("/assist")
     public String getOrderSupportAssistance(@RequestParam String customerName,
                                             @RequestParam String orderId,
                                             @RequestParam String customerMessage){
         return service.assistWithOrderSupport(customerName, orderId, customerMessage);
+    }
+
+    @GetMapping("/assist/v2")
+    public String getOrderSupportAssistancev2(@RequestParam String customerName,
+                                            @RequestParam String orderId,
+                                            @RequestParam String customerMessage){
+        return service.assistantWithOrderSupportV2(customerName, orderId, customerMessage);
     }
 }
