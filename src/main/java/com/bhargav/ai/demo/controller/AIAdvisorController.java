@@ -1,0 +1,19 @@
+package com.bhargav.ai.demo.controller;
+
+import com.bhargav.ai.demo.service.AIAdvisorService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/advisor")
+@RequiredArgsConstructor
+public class AIAdvisorController {
+    private final AIAdvisorService aiAdvisorService;
+
+    @GetMapping("/getAdvice")
+    public String getAdvice(String message){
+        return aiAdvisorService.getAdvice(message);
+    }
+}
