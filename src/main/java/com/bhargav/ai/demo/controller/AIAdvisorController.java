@@ -16,4 +16,9 @@ public class AIAdvisorController {
     public String getAdvice(String message){
         return aiAdvisorService.getAdvice(message);
     }
+
+    @GetMapping("/getAdvice-safeGurad")
+    public String getAdviceWithSafty(String message){
+        return aiAdvisorService.getAdviceWithSafeGuard(message);
+    }
 }
