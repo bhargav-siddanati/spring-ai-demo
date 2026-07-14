@@ -57,7 +57,8 @@ public class AIAdvisorService {
                     List.of("password", "otp", "cvv", "Debit card number", "Credit card number"),
                     "For security reasons, we are never ask such information",
                     1),
-                new AuditTokenUsageAdvisor()))
+//                new AuditTokenUsageAdvisor(),
+                    new DailyTokenUsageLimitAuditAdvisor()))
         .system(SYSTEM_PROMPT)
         .user(msg)
         .call()
