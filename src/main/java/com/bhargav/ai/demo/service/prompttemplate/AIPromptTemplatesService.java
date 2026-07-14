@@ -1,4 +1,4 @@
-package com.bhargav.ai.demo.service;
+package com.bhargav.ai.demo.service.prompttemplate;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;

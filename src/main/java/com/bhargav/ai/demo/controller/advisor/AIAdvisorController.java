@@ -1,6 +1,6 @@
-package com.bhargav.ai.demo.controller;
+package com.bhargav.ai.demo.controller.advisor;
 
-import com.bhargav.ai.demo.service.AIAdvisorService;
+import com.bhargav.ai.demo.service.advisor.AIAdvisorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

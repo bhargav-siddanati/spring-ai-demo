@@ -1,6 +1,6 @@
-package com.bhargav.ai.demo.controller;
+package com.bhargav.ai.demo.controller.prompttemplate;
 
-import com.bhargav.ai.demo.service.AIPromptTemplatesService;
+import com.bhargav.ai.demo.service.prompttemplate.AIPromptTemplatesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.web.bind.annotation.GetMapping;

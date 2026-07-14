@@ -1,4 +1,4 @@
-package com.bhargav.ai.demo.service;
+package com.bhargav.ai.demo.service.ordersupport;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Value;

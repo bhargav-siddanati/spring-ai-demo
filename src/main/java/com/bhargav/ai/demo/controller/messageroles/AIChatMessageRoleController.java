@@ -1,6 +1,6 @@
-package com.bhargav.ai.demo.controller;
+package com.bhargav.ai.demo.controller.messageroles;
 
-import com.bhargav.ai.demo.service.MessageRolesDemoService;
+import com.bhargav.ai.demo.service.messageroles.MessageRolesDemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
